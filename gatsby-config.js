@@ -27,5 +27,6 @@ module.exports = {
         name: `posts`,
       },
     },
+    `gatsby-plugin-layout`,
   ],
 }
