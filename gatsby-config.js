@@ -14,12 +14,8 @@ module.exports = {
 
   plugins: [
     `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-      },
-    },
+    `gatsby-plugin-layout`,
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -27,6 +23,11 @@ module.exports = {
         name: `posts`,
       },
     },
-    `gatsby-plugin-layout`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+      },
+    },
   ],
 }

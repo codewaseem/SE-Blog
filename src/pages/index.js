@@ -1,16 +1,24 @@
 import React from "react"
+import styled from "@emotion/styled"
+import { Link, graphql } from "gatsby"
+
+const IndexWrapper = styled.main``
+
+const PostWrapper = styled.div``
 
 export default ({ data }) => {
   return (
-    <>
-      {data.allMdx.nodes.map(({ excerpt, frontmatter }) => (
-        <>
-          <h1>{frontmatter.title}</h1>
-          <p>{frontmatter.date}</p>
-          <p>{excerpt}</p>
-        </>
+    <IndexWrapper>
+      {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
+        <PostWrapper key={id}>
+          <Link to={fields.slug}>
+            <h1>{frontmatter.title}</h1>
+            <p>{frontmatter.date}</p>
+            <p>{excerpt}</p>
+          </Link>
+        </PostWrapper>
       ))}
-    </>
+    </IndexWrapper>
   )
 }
 
@@ -26,6 +34,9 @@ export const query = graphql`
         frontmatter {
           title
           date
+        }
+        fields {
+          slug
         }
       }
     }
